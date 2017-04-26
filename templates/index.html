@@ -1,0 +1,82 @@
+{% extends 'layout.html' %}
+
+{% block head %}
+  {{ super() }}
+  {% if request.path == '/' %}
+    <title>{{ site.title }}</title>
+  {% else %}
+    <title>{{ 'Page ' + request.path.rstrip('/').rsplit('/', 1)[-1] + ' - ' + site.title }}</title>
+  {% endif %}
+{% endblock %}
+
+{% block body %}
+  <div class="entries">
+    {% if not entries %}
+      <div class="text-center">
+        <p>There is nothing here.</p>
+      </div>
+    {% else %}
+
+      {% for entry in entries %}
+        <div class="entry">
+          <article>
+            <h1><a href="{{ entry.url }}">{{ entry.title }}</a></h1>
+
+            <div class="meta">
+              {% if entry.created %}
+                <span class="created"><span class="key">Created</span>: <span
+                        class="value">{{ entry.created.strftime('%Y-%m-%d') }}</span></span><br>
+              {% endif %}
+              {% if entry.updated and entry.updated != entry.created %}
+                <span class="updated"><span class="key">Updated</span>: <span
+                        class="value">{{ entry.updated.strftime('%Y-%m-%d') }}</span></span><br>
+              {% endif %}
+              {% if entry.categories %}
+                <span class="categories"><span class="key">Categories</span>: <span class="value">[
+                  {%- for category in entry.categories -%}
+                    {%- if loop.index > 1 -%}
+                      <span>, </span>
+                    {%- endif -%}
+                    <a href="{{ url_for('.category', category_name=category) }}">{{ category }}</a>
+                  {%- endfor -%}
+                  ]</span></span><br>
+              {% endif %}
+              {% if entry.tags %}
+                <span class="tags"><span class="key">Tags</span>: <span class="value">[
+                  {%- for tag in entry.tags -%}
+                    {%- if loop.index > 1 -%}
+                      <span>, </span>
+                    {%- endif -%}
+                    <a href="{{ url_for('.tag', tag_name=tag) }}">{{ tag }}</a>
+                  {%- endfor -%}
+                  ]</span></span>
+              {% endif %}
+            </div>
+
+            {{ entry.preview|safe }}
+            {% if entry.has_more_content %}
+              <p>……</p>
+              <p><a href="{{ entry.url }}">READ MORE</a></p>
+            {% endif %}
+          </article>
+        </div>
+      {% endfor %}
+
+      {% if prev_url or next_url %}
+        <ul class="pager">
+          {% if prev_url %}
+            <li class="previous">
+              <a href="{{ prev_url }}" class="button">← Older</a>
+            </li>
+          {% endif %}
+          {% if next_url %}
+            <li class="next">
+              <a href="{{ next_url }}" class="button">Newer →</a>
+            </li>
+          {% endif %}
+        </ul>
+      {% endif %}
+
+    {% endif %}
+  </div>
+{% endblock %}

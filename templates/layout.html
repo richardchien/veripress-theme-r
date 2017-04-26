@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  {% block head %} {% include ['custom/head.html', 'head.html'] ignore missing %} {% endblock %}
+</head>
+
+<body>
+
+<div class="section">
+  <div class="container">
+    <div class="row">
+      <div id="side" class="col-3">
+        {% block side %}
+          {% include ['custom/side.html', 'side.html'] ignore missing %}
+        {% endblock %}
+      </div>
+      <div id="main" class="col-7">
+        {% block body %}{% endblock %}
+        {% include ['custom/footer.html', 'footer.html'] ignore missing %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% block foot %}
+  {% include ['custom/foot.html', 'foot.html'] ignore missing %}
+{% endblock %}
+
+</body>
+
+</html>
