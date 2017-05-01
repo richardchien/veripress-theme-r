@@ -109,6 +109,10 @@ table.table-clean td:first-child {
     min-height: 1px;
 }
 
+.col-3 *, .col-7 *, .col-10 * {
+    max-width: 100%;
+}
+
 .col-3 {
     width: 30%;
 }

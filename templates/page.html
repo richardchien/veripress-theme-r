@@ -10,36 +10,38 @@
     <article>
       <h1>{{ entry.title }}</h1>
 
-      <div class="meta">
-        {% if entry.created %}
-          <span class="created"><span class="key">Created</span>: <span
-                  class="value">{{ entry.created.strftime('%Y-%m-%d') }}</span></span><br>
-        {% endif %}
-        {% if entry.updated and entry.updated != entry.created %}
-          <span class="updated"><span class="key">Updated</span>: <span
-                  class="value">{{ entry.updated.strftime('%Y-%m-%d') }}</span></span><br>
-        {% endif %}
-        {% if entry.categories %}
-          <span class="categories"><span class="key">Categories</span>: <span class="value">[
-            {%- for category in entry.categories -%}
-              {%- if loop.index > 1 -%}
-                <span>, </span>
-              {%- endif -%}
-              <a href="{{ url_for('.category', category_name=category) }}">{{ category }}</a>
-            {%- endfor -%}
-            ]</span></span><br>
-        {% endif %}
-        {% if entry.tags %}
-          <span class="tags"><span class="key">Tags</span>: <span class="value">[
-            {%- for tag in entry.tags -%}
-              {%- if loop.index > 1 -%}
-                <span>, </span>
-              {%- endif -%}
-              <a href="{{ url_for('.tag', tag_name=tag) }}">{{ tag }}</a>
-            {%- endfor -%}
-            ]</span></span>
-        {% endif %}
-      </div>
+      {% if entry.created or entry.categories or entry.tags %}
+        <div class="meta">
+          {% if entry.created %}
+            <span class="created"><span class="key">Created</span>: <span
+                    class="value">{{ entry.created.strftime('%Y-%m-%d') }}</span></span><br>
+          {% endif %}
+          {% if entry.updated and entry.updated != entry.created %}
+            <span class="updated"><span class="key">Updated</span>: <span
+                    class="value">{{ entry.updated.strftime('%Y-%m-%d') }}</span></span><br>
+          {% endif %}
+          {% if entry.categories %}
+            <span class="categories"><span class="key">Categories</span>: <span class="value">[
+              {%- for category in entry.categories -%}
+                {%- if loop.index > 1 -%}
+                  <span>, </span>
+                {%- endif -%}
+                <a href="{{ url_for('.category', category_name=category) }}">{{ category }}</a>
+              {%- endfor -%}
+              ]</span></span><br>
+          {% endif %}
+          {% if entry.tags %}
+            <span class="tags"><span class="key">Tags</span>: <span class="value">[
+              {%- for tag in entry.tags -%}
+                {%- if loop.index > 1 -%}
+                  <span>, </span>
+                {%- endif -%}
+                <a href="{{ url_for('.tag', tag_name=tag) }}">{{ tag }}</a>
+              {%- endfor -%}
+              ]</span></span>
+          {% endif %}
+        </div>
+      {% endif %}
 
       <div class="toc">
         {% if entry.toc_html %}
