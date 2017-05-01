@@ -101,6 +101,7 @@ table.table-clean th, table.table-clean td {
 table.table-clean th:first-child,
 table.table-clean td:first-child {
     border-left: none;
+    text-align: right;
 }
 
 .col-3, .col-7, .col-10 {
