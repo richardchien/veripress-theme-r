@@ -29,8 +29,8 @@ a, a:focus, a:hover,
 a.button {
     display: inline-block;
     cursor: pointer;
-    background: #d32f2f;
-    border: 2px solid #d32f2f;
+    background: #2f71d3;
+    border: 2px solid #2f71d3;
     padding: 6px 12px;
     font-size: 0.8em;
     color: #fff;
@@ -38,7 +38,7 @@ a.button {
 
 a.button:hover {
     background: inherit;
-    color: #d32f2f;
+    color: #2f71d3;
 }
 
 hr {
@@ -131,7 +131,7 @@ table.table-clean td:first-child {
     left: 0;
     bottom: 0;
     height: 100%;
-    background: #d32f2f;
+    background: #2f71d3;
     color: #fff;
     padding: 0 36px;
     text-align: right;
@@ -206,25 +206,25 @@ table.table-clean td:first-child {
 
 #main .entry h1 {
     font-size: 1.8em;
-    color: #d32f2f;
+    color: #2f71d3;
 }
 
 #main .entry a:not(.button),
 .copyright a {
-    color: #d32f2f;
+    color: #2f71d3;
     border-bottom: 2px solid transparent;
 }
 
 #main .entry a:not(.button):hover,
 .copyright a:hover {
-    border-bottom-color: #d32f2f;
+    border-bottom-color: #2f71d3;
 }
 
 #main .entry .meta {
     line-height: 1.4;
     font-size: 80%;
     font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
-    border-left: 2px solid #d32f2f;
+    border-left: 2px solid #2f71d3;
     padding: 6px 12px;
 }
 
