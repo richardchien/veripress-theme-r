@@ -19,7 +19,7 @@
 
       {% for entry in entries %}
         <div class="entry">
-          <article>
+          <article {%- if entry.meta.language %} lang="{{ entry.meta.language }}" {%- endif %}>
             <h1><a href="{{ entry.url }}">{{ entry.title }}</a></h1>
 
             <div class="meta">

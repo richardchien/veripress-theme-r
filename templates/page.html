@@ -7,7 +7,7 @@
 
 {% block body %}
   <div class="entry">
-    <article>
+    <article {%- if entry.meta.language %} lang="{{ entry.meta.language }}" {%- endif %}>
       <h1>{{ entry.title }}</h1>
 
       {% if entry.created or entry.categories or entry.tags %}
