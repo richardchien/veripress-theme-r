@@ -1,0 +1,10 @@
+{% if config.DISQUS_ENABLED %}
+  <div class="discuss-thread">
+    {% include 'discuss/disqus.html' ignore missing %}
+  </div>
+{% elif config.NETEASE_GENTIE_ENABLED %}
+  <div class="discuss-thread">
+    <hr>
+    {% include 'discuss/163gentie.html' ignore missing %}
+  </div>
+{% endif %}
