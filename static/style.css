@@ -160,6 +160,11 @@ table.table-clean td:first-child {
     font-size: 0;
 }
 
+#logo svg,
+#logo img {
+    width: 90px;
+}
+
 #logo span {
     text-indent: 9000em;
     position: absolute;
